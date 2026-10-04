@@ -1,0 +1,7 @@
+---
+- name: Restart Datadog agent
+  ansible.builtin.service:
+    name: datadog-agent
+    state: restarted
+  # Ignore errors in case the agent is not installed (useful for testing)
+  ignore_errors: true

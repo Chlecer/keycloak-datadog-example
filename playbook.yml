@@ -1,0 +1,11 @@
+---
+# Main playbook - Keycloak + Datadog tags example
+- name: Install/Configure Keycloak and ensure Datadog tags
+  hosts: keycloak_servers
+  become: true
+
+  roles:
+    - role: keycloak
+      tags:
+        - keycloak
+        - datadog

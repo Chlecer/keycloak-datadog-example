@@ -1,0 +1,21 @@
+---
+# Safely add Keycloak-specific tags to the existing Datadog Agent configuration.
+# This never touches the API key and never removes tags from other services.
+# Uses pure lineinfile – simple, idempotent and easy to maintain.
+
+- name: Check if Datadog Agent configuration exists
+  ansible.builtin.stat:
+    path: /etc/datadog-agent/datadog.yaml
+  register: datadog_config
+  check_mode: no
+
+- name: Ensure Keycloak Datadog tags are present
+  ansible.builtin.lineinfile:
+    path: /etc/datadog-agent/datadog.yaml
+    regexp: '^\s*-\s*"{{ item }}"'
+    line: '  - "{{ item }}"'
+    insertafter: '^tags:'
+    state: present
+  loop: "{{ keycloak_datadog_tags }}"
+  notify: Restart Datadog agent
+  when: datadog_config.stat.exists

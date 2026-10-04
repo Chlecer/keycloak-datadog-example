@@ -1,0 +1,31 @@
+# Ansible artifacts
+*.retry
+*.log
+.ansible/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Secrets — never commit real Datadog API keys or Ansible Vault material
+*.vault
+vault_pass*
+*.pem
+group_vars/*/vault.yml
+host_vars/*/vault.yml
+.env
+.env.*
+
+# Editors / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

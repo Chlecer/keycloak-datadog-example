@@ -1,0 +1,15 @@
+---
+# Main tasks for the Keycloak role
+
+- name: Placeholder - Install / Configure Keycloak
+  ansible.builtin.debug:
+    msg: "Here you would put your real Keycloak installation and configuration tasks"
+
+# -------------------------------------------------
+# At the very end of the role we ensure the Datadog tags exist
+# -------------------------------------------------
+- name: Ensure Datadog tags for Keycloak
+  ansible.builtin.include_tasks: datadog_tags.yml
+  tags:
+    - datadog
+    - keycloak

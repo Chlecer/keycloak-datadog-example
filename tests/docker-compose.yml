@@ -1,0 +1,11 @@
+services:
+  keycloak-dd-test:
+    image: ubuntu:22.04
+    container_name: keycloak-dd-test
+    hostname: keycloak-dd-test
+    privileged: true
+    volumes:
+      - ../:/ansible:ro
+    working_dir: /ansible
+    command: sleep infinity
+    # We will install Datadog Agent and Ansible inside the container for testing

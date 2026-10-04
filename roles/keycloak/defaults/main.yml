@@ -1,0 +1,7 @@
+---
+# Tags that must be present after Keycloak is installed/updated.
+# Feel free to add more (env, team, version, etc.)
+keycloak_datadog_tags:
+  - "service:keycloak"
+  - "app:keycloak"
+  - "component:keycloak"
